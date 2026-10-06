@@ -15,17 +15,25 @@ projects = [
     {
         "name": "Curved Spacetime",
         "slug": "Curved-Spacetime",
-        "description": "A visualization of Gaussian curvature using Manim.",
+        "description": "A visualization of Gaussian curvature for Earth and Sun",
         "video": "solar.mp4",
         "code": "source_code/solarsys.py"
     },
 
     {
-        "name": "BPS Black Holes",
-        "slug": "bps-black-holes",
-        "description": "A visualization related to BPS black holes in supergravity and string theory.",
-        "video": "PortfolioTest.mp4",
-        "code": "source_code/testfile.py"
+        "name": "3D Rotations",
+        "slug": "3D-Rotations",
+        "description": "A visualization of tetrahedron spinning around a moving axis",
+        "video": "tetra.mp4",
+        "code": "source_code/moext.py"
+    },
+
+    {
+        "name": "Shortest Path Under Constant Acceleration",
+        "slug": "shortest-path-under-constant-acceleration",
+        "description": "This animation demonstrates shortest path of a boby moving under constant acceleration",
+        "Video": "bc.mp4",
+        "code": "Brachistochrone"
     }
 
 ]
