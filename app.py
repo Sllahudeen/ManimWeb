@@ -33,7 +33,7 @@ projects = [
         "slug": "shortest-path-under-constant-acceleration",
         "description": "This animation demonstrates shortest path of a boby moving under constant acceleration",
         "Video": "bc.mp4",
-        "code": "Brachistochrone"
+        "code": "Brachistochrone.py"
     }
 
 ]
