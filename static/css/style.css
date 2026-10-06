@@ -1,0 +1,326 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111111;
+    color: white;
+}
+
+
+/* ---------- Header ---------- */
+
+header {
+    text-align: center;
+    padding: 70px 20px 50px;
+}
+
+header h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+header p {
+    font-size: 19px;
+    color: #aaaaaa;
+}
+
+
+/* ---------- Main Content ---------- */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 30px 60px;
+}
+
+main > h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   PROJECT LIST ON MAIN PAGE
+   ========================================================= */
+
+
+/* ---------- Project List ---------- */
+
+.project-list {
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* ---------- Project Buttons ---------- */
+
+.project-button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 22px 30px;
+
+    background-color: #1c1c1c;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 22px;
+    text-align: center;
+
+    border-radius: 10px;
+
+    border: 1px solid #333333;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* ---------- Visited Project Buttons ---------- */
+
+.project-button:visited {
+    color: white;
+    background-color: #1c1c1c;
+}
+
+
+/* ---------- Hover Effect ---------- */
+
+.project-button:hover {
+    color: white;
+    background-color: #292929;
+
+    transform: translateY(-2px);
+}
+
+
+/* ---------- Click Effect ---------- */
+
+.project-button:active {
+    color: white;
+    background-color: #292929;
+}
+
+
+/* =========================================================
+   INDIVIDUAL PROJECT PAGE
+   ========================================================= */
+
+
+/* ---------- Project Page ---------- */
+
+.project-page {
+    max-width: 900px;
+    margin: auto;
+}
+
+
+/* ---------- Project Sections ---------- */
+
+.project-page section {
+    background-color: #1c1c1c;
+
+    padding: 30px;
+
+    margin-bottom: 30px;
+
+    border-radius: 14px;
+}
+
+
+/* ---------- Section Headings ---------- */
+
+.project-page h2 {
+    font-size: 28px;
+
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+
+/* ---------- Project Video ---------- */
+
+.project-animation video {
+    width: 100%;
+    max-width: 750px;
+
+    height: auto;
+
+    display: block;
+
+    margin: 0 auto;
+
+    border-radius: 10px;
+}
+
+
+/* ---------- Project Description ---------- */
+
+.project-description p {
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #cccccc;
+}
+
+
+/* ---------- Back Button ---------- */
+
+.back-button {
+    text-align: center;
+
+    margin: 40px 0;
+}
+
+
+.back-button a {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    background-color: #1c1c1c;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    border: 1px solid #333333;
+}
+
+
+/* ---------- Back Button Hover ---------- */
+
+.back-button a:hover {
+    background-color: #292929;
+
+    color: white;
+}
+/* =========================================================
+   SOURCE CODE
+   ========================================================= */
+
+.project-code {
+    overflow: hidden;
+}
+
+
+/* ---------- Code Container ---------- */
+
+.code-container {
+    background-color: #272822;
+
+    border-radius: 10px;
+
+    padding: 25px;
+
+    overflow-x: auto;
+
+    text-align: left;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ---------- Pygments Code ---------- */
+
+.code-container pre {
+    margin: 0;
+}
+
+
+/* ---------- Python Syntax Colors ---------- */
+
+.highlight .k {
+    color: #f92672;
+}
+
+.highlight .kn {
+    color: #f92672;
+}
+
+.highlight .kd {
+    color: #66d9ef;
+}
+
+.highlight .nf {
+    color: #a6e22e;
+}
+
+.highlight .nc {
+    color: #a6e22e;
+}
+
+.highlight .nn {
+    color: #a6e22e;
+}
+
+.highlight .s {
+    color: #e6db74;
+}
+
+.highlight .sa {
+    color: #e6db74;
+}
+
+.highlight .sb {
+    color: #e6db74;
+}
+
+.highlight .c {
+    color: #75715e;
+}
+
+.highlight .cm {
+    color: #75715e;
+}
+
+.highlight .cp {
+    color: #75715e;
+}
+
+.highlight .o {
+    color: #f92672;
+}
+
+.highlight .p {
+    color: #f8f8f2;
+}
+
+.highlight .mi {
+    color: #ae81ff;
+}
+
+.highlight .mf {
+    color: #ae81ff;
+}
+
+.highlight .nb {
+    color: #66d9ef;
+}
+
+.highlight .bp {
+    color: #66d9ef;
+}
+
+.highlight .n {
+    color: #f8f8f2;
+}
+
+.highlight .nn {
+    color: #a6e22e;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{{ project.name }} | Manim Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>{{ project.name }}</h1>
+
+    <p>
+        Manim Mathematical Physics Visualization
+    </p>
+
+</header>
+
+
+<main class="project-page">
+
+
+    <!-- Animation -->
+
+    <section class="project-animation">
+
+        <h2>Animation</h2>
+
+        <video controls autoplay muted loop>
+
+            <source
+                src="{{ url_for('static', filename='videos/' + project.video) }}"
+                type="video/mp4"
+            >
+
+            Your browser does not support video playback.
+
+        </video>
+
+    </section>
+
+
+    <!-- Description -->
+
+    <section class="project-description">
+
+        <h2>Description</h2>
+
+        <p>
+            {{ project.description }}
+        </p>
+
+    </section>
+
+
+    <!-- Source Code -->
+
+    <section class="project-code">
+
+        <h2>Source Code</h2>
+
+        <div class="code-container">
+
+            {{ highlighted_code | safe }}
+
+        </div>
+
+    </section>
+
+
+    <!-- Back -->
+
+    <div class="back-button">
+
+        <a href="{{ url_for('home') }}">
+            ← Back to all projects
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        Manim Portfolio
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
