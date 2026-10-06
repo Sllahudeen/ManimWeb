@@ -13,11 +13,11 @@ app = Flask(__name__)
 projects = [
 
     {
-        "name": "Gaussian Curvature",
-        "slug": "gaussian-curvature",
+        "name": "Curved Spacetime",
+        "slug": "Curved-Spacetime",
         "description": "A visualization of Gaussian curvature using Manim.",
-        "video": "PortfolioTest.mp4",
-        "code": "source_code/testfile.py"
+        "video": "solar.mp4",
+        "code": "source_code/solar.py"
     },
 
     {
