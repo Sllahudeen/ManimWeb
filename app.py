@@ -17,7 +17,7 @@ projects = [
         "slug": "Curved-Spacetime",
         "description": "A visualization of Gaussian curvature using Manim.",
         "video": "solar.mp4",
-        "code": "source_code/solar.py"
+        "code": "source_code/solarsys.py"
     },
 
     {
