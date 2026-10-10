@@ -32,8 +32,23 @@ projects = [
         "name": "Shortest Path Under Constant Acceleration",
         "slug": "shortest-path-under-constant-acceleration",
         "description": "This animation demonstrates shortest path of a boby moving under constant acceleration",
-        "Video": "bc.mp4",
+        "video": "bc.mp4",
         "code": "source_code/Brachistochrone.py"
+    },
+
+    {
+        "name": "Spherical Harmonics",
+        "slug": "spherical-harmonics",
+        "description": "This animation describes shape of different spherical harmonics in application to hydrogen atom they describe the probability density of electron in hydrogen atom",
+        "video": "RSH.mp4",
+        "code": "source_code/H_orbitals.py"
+    },
+    {
+        "name": "Evolution of Qubit",
+        "slug": "evolution-of-qubit",
+        "description": "This animation describes the evolution of qubit in the presence of time-dependent magnetic field",
+        "video": "BlochFieldEvolution.mp4",
+        "code": "source_code/quantumdyn.py"
     }
 
 ]
