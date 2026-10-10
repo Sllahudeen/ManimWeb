@@ -43,12 +43,21 @@ projects = [
         "video": "RSH.mp4",
         "code": "source_code/H_orbitals.py"
     },
+
     {
         "name": "Evolution of Qubit",
         "slug": "evolution-of-qubit",
         "description": "This animation describes the evolution of qubit in the presence of time-dependent magnetic field",
         "video": "BlochFieldEvolution.mp4",
         "code": "source_code/quantumdyn.py"
+    },
+
+    {
+        "name": "Double Pendulum",
+        "slug": "double-pendulum",
+        "description": "This animation demonstrates double pendulum",
+        "video": "DoublePendulum.mp4",
+        "code": "source_code/pendulum.py"
     }
 
 ]
