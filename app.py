@@ -58,6 +58,14 @@ projects = [
         "description": "This animation demonstrates double pendulum",
         "video": "DoublePendulum.mp4",
         "code": "source_code/pendulum.py"
+    },
+
+    {
+        "name": "3D Lissajous Curves",
+        "slug": "3d-lissajous-curves",
+        "description": "This animation demonstrates 3D Lissajous curves",
+        "video": "Lissajous3D.mp4",
+        "code": "source_code/lissajous.py"
     }
 
 ]
