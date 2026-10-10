@@ -1,9 +1,13 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Manim Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Physics with Manim | Scientific Visualizations</title>
 
     <link
         rel="stylesheet"
@@ -17,10 +21,10 @@
 
 <header>
 
-    <h1>Manim Portfolio</h1>
+    <h1>Physics with Manim</h1>
 
-    <p>
-        Mathematical Physics Visualizations
+    <p class="header-subtitle">
+        Mathematical Physics · Scientific Visualization · Computational Exploration
     </p>
 
 </header>
@@ -28,30 +32,69 @@
 
 <main>
 
-    <h2>Projects</h2>
+    <!-- Personal Introduction -->
+
+    <section class="personal-intro">
+
+        <h2>About Me</h2>
+
+        <p>
+            I am a physics enthusiast with a strong interest in theoretical
+            physics, mathematical structures, and computational methods.
+            I enjoy exploring how mathematical ideas describe the physical
+            world and how complex concepts can be communicated through
+            clear visual representations.
+        </p>
+
+        <p>
+            This website is a collection of animations I develop using
+            Python and Manim. Through these projects, I aim to connect
+            mathematical reasoning with visual intuition and explore
+            physical systems in an interactive and engaging way.
+        </p>
+
+    </section>
 
 
-    <div class="project-list">
+    <!-- Projects -->
 
-        {% for project in projects %}
+    <section class="projects-section">
 
-        <a
-            class="project-button"
-            href="{{ url_for('project', slug=project.slug) }}"
-        >
-            {{ project.name }}
-        </a>
+        <h2>Projects</h2>
 
-        {% endfor %}
+        <p class="projects-intro">
+            The projects below explore a range of topics in mathematics
+            and physics, from classical dynamical systems and geometry
+            to quantum mechanics and gravitational phenomena. Each project
+            combines a visual animation with its description and Python
+            source code, making it possible to explore both the underlying
+            ideas and their implementation.
+        </p>
 
-    </div>
+
+        <div class="project-list">
+
+            {% for project in projects %}
+
+            <a
+                class="project-button"
+                href="{{ url_for('project', slug=project.slug) }}"
+            >
+                {{ project.name }}
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
 
 </main>
 
 
 <footer>
 
-    <p>Manim Portfolio</p>
+    <p>Physics with Manim</p>
 
 </footer>
 
@@ -59,3 +102,4 @@
 </body>
 
 </html>
+```

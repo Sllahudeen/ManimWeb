@@ -324,3 +324,91 @@ main > h2 {
 .highlight .nn {
     color: #a6e22e;
 }
+
+.personal-intro {
+    max-width: 850px;
+    margin: 0 auto 65px;
+    padding: 30px 35px;
+
+    background-color: #1c1c1c;
+    border: 1px solid #333333;
+    border-radius: 14px;
+}
+
+.personal-intro h2 {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 22px;
+}
+
+.personal-intro p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #cccccc;
+    margin-bottom: 18px;
+}
+
+.personal-intro p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ---------- Projects Introduction ---------- */
+
+.projects-section > h2 {
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.projects-intro {
+    max-width: 850px;
+    margin: 0 auto 35px;
+
+    font-size: 17px;
+    line-height: 1.9;
+    color: #bbbbbb;
+}
+
+
+/* ---------- Mobile Layout ---------- */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 45px 18px 35px;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    .header-subtitle {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    main {
+        padding: 15px 18px 40px;
+    }
+
+    .personal-intro {
+        padding: 24px 20px;
+        margin-bottom: 45px;
+    }
+
+    .personal-intro h2,
+    .projects-section > h2 {
+        font-size: 26px;
+    }
+
+    .personal-intro p,
+    .projects-intro {
+        font-size: 16px;
+    }
+
+    .project-button {
+        font-size: 18px;
+        padding: 18px 20px;
+    }
+
+}
