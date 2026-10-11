@@ -66,6 +66,14 @@ projects = [
         "description": "This animation demonstrates 3D Lissajous curves",
         "video": "Lissajous3D.mp4",
         "code": "source_code/lissajous.py"
+    },
+
+    {
+        "name": "Motion of Charged Particles",
+        "slug": "motion-of-charged-particles",
+        "description": "This animation demonstrates motion of charged particles",
+        "video": "ElectricFieldParticle.mp4",
+        "code": "source_code/electricfield.py"
     }
 
 ]
