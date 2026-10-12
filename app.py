@@ -17,7 +17,7 @@ projects = [
         "slug": "black-holes",
         "description": "This animation demonstrates black holes",
         "video": "BlackHoleShader.mp4",
-        "code": "source_code/.py"
+        "code": "source_code/shader.py"
     },
 
     {
