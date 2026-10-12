@@ -13,6 +13,14 @@ app = Flask(__name__)
 projects = [
 
     {
+        "name": "Black Holes",
+        "slug": "black-holes",
+        "description": "This animation demonstrates black holes",
+        "video": "BlackHoleShader.mp4",
+        "code": "source_code/.py"
+    },
+
+    {
         "name": "Curved Spacetime",
         "slug": "Curved-Spacetime",
         "description": "A visualization of Gaussian curvature for Earth and Sun",
