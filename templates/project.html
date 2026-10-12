@@ -10,6 +10,22 @@
         href="{{ url_for('static', filename='css/style.css') }}"
     >
 
+    <script>
+        window.MathJax = {
+           tex: {
+           inlineMath: [['\\(', '\\)']],
+           displayMath: [['\\[', '\\]']]
+           },
+           svg: {
+             fontCache: 'global'
+           }
+        };
+    </script>
+    <script defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+
 </head>
 
 
@@ -56,9 +72,9 @@
 
         <h2>Description</h2>
 
-        <p>
-            {{ project.description }}
-        </p>
+        <div class="project-description">
+             {{ project.description | safe }}
+        </div>
 
     </section>
 

@@ -412,3 +412,46 @@ main > h2 {
     }
 
 }
+
+.physics-description {
+    max-width: 950px;
+    margin: 35px auto;
+    padding: 0 22px;
+    line-height: 1.8;
+}
+
+.physics-description h3 {
+    margin-top: 36px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+}
+
+.physics-description h4 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.physics-description p {
+    margin: 14px 0;
+}
+
+.physics-description .equation {
+    margin: 22px 0;
+    padding: 12px 8px;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.physics-description li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+    .physics-description {
+        padding: 0 14px;
+    }
+
+    .physics-description .equation {
+        font-size: 0.9rem;
+    }
+}
