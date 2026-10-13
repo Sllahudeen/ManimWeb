@@ -4667,6 +4667,14 @@ the minimum-time problem under gravity.
     </p>
     """,
 
+    },
+
+    {
+        "name": "Hopf Fibration",
+        "slug": "hopf-fibration",
+        "video": "HopfFibration.mp4",
+        "code": "source_code/multidimension.py"
+
     }
 
 ]
