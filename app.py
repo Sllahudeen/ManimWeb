@@ -4673,8 +4673,916 @@ the minimum-time problem under gravity.
         "name": "Hopf Fibration",
         "slug": "hopf-fibration",
         "video": "HopfFibration.mp4",
-        "code": "source_code/multidimension.py"
+        "code": "source_code/multidimension.py",
+        "description": r"""
+        <h2>Part I: Mathematical Foundations — The Hopf Fibration</h2>
 
+        <p>
+        The Hopf fibration is a remarkable construction in differential geometry
+        and algebraic topology. It establishes a relationship between the
+        three-sphere \(S^3\), a three-dimensional manifold embedded in
+        four-dimensional Euclidean space, and the ordinary two-sphere \(S^2\).
+        Its defining geometric feature is that \(S^3\) can be decomposed into
+        disjoint circles, known as Hopf fibers, with each fiber corresponding
+        to a point on \(S^2\).
+        </p>
+
+        <p>
+        The construction is particularly interesting because these circles are
+        not arranged independently. Under the standard Hopf fibration, any two
+        distinct fibers form a linked pair. This linking is a global topological
+        property rather than an accidental crossing produced by a particular
+        viewing angle. A three-dimensional visualization can therefore reveal
+        an aspect of higher-dimensional geometry that is difficult to appreciate
+        from equations alone.
+        </p>
+
+        <p>
+        This project builds the construction from its mathematical ingredients.
+        It introduces the three-sphere through complex coordinates, parameterizes
+        its points using three angles, applies stereographic projection to obtain
+        three-dimensional coordinates, constructs constant-coordinate tori,
+        draws representative Hopf fibers, and introduces the Hopf map
+        \(h:S^3\to S^2\). The final rotating view removes the toroidal surfaces
+        so that the linked circular curves can be inspected more clearly.
+        </p>
+
+        <h3>1. From the Ordinary Sphere to the Three-Sphere</h3>
+
+        <p>
+        The unit circle in the plane is defined by
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            x^2+y^2=1.
+        \]
+        </p>
+
+        <p>
+        Adding one more coordinate gives the ordinary two-sphere:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            S^2=\{(x,y,z)\in\mathbb R^3:
+            x^2+y^2+z^2=1\}.
+        \]
+        </p>
+
+        <p>
+        The corresponding unit three-sphere is
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{
+            S^3=\left\{
+            (x_1,x_2,x_3,x_4)\in\mathbb R^4:
+            x_1^2+x_2^2+x_3^2+x_4^2=1
+            \right\}.
+            }
+        \]
+        </p>
+
+        <p>
+        The dimension of a sphere is its intrinsic dimension. The equation
+        defining \(S^3\) imposes one constraint on four real coordinates,
+        leaving three independent local degrees of freedom. Although \(S^3\)
+        is three-dimensional intrinsically, its natural Euclidean embedding
+        requires four coordinates.
+        </p>
+
+        <p>
+        This distinction explains why a direct, distortion-free representation
+        of the entire three-sphere as a hypersurface in ordinary three-dimensional
+        space is unavailable. Instead, the animation uses a projection from
+        \(\mathbb R^4\) into \(\mathbb R^3\). The resulting picture is not
+        the three-sphere itself, but a three-dimensional representation of
+        its points and selected submanifolds.
+        </p>
+
+        <h3>2. Complex Coordinates on \(S^3\)</h3>
+
+        <p>
+        Four real coordinates can be grouped naturally into two complex numbers:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            z_1=x_1+ix_2,\qquad z_2=x_3+ix_4.
+        \]
+        </p>
+
+        <p>
+        The complex modulus satisfies
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            |z_1|^2=x_1^2+x_2^2,\qquad
+            |z_2|^2=x_3^2+x_4^2.
+        \]
+        </p>
+
+        <p>
+        Consequently, the equation defining the three-sphere becomes
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{|z_1|^2+|z_2|^2=1.}
+        \]
+        </p>
+
+        <p>
+        This form is especially useful for the Hopf fibration because complex
+        phases provide natural angular coordinates. Instead of handling four
+        real components independently, we can describe a point using two
+        complex amplitudes whose squared magnitudes add to unity.
+        </p>
+
+        <h3>3. Deriving the Angular Parameterization</h3>
+
+        <p>
+        A convenient way to satisfy the unit constraint automatically is to
+        choose
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{
+            z_1=\cos\eta\,e^{i\alpha},\qquad
+            z_2=\sin\eta\,e^{i\beta}.
+            }
+        \]
+        </p>
+
+        <p>
+        Here, \(\eta\) determines the relative magnitudes of the two complex
+        coordinates, while \(\alpha\) and \(\beta\) determine their phases.
+        The magnitudes are
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            |z_1|=\cos\eta,\qquad |z_2|=\sin\eta
+        \]
+        </p>
+
+        <p>
+        for the range \(0\leq\eta\leq\pi/2\). Squaring and adding gives
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            |z_1|^2+|z_2|^2
+            =\cos^2\eta+\sin^2\eta=1.
+        \]
+        </p>
+
+        <p>
+        The three-sphere constraint is therefore satisfied for every allowed
+        value of the parameters. This is a useful computational strategy:
+        the parameterization constructs points on the required manifold by
+        design, rather than calculating arbitrary points and projecting them
+        back onto the constraint surface.
+        </p>
+
+        <p>
+        Expanding the complex exponentials yields the four real coordinates:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \begin{aligned}
+            x_1&=\cos\eta\cos\alpha,\\
+            x_2&=\cos\eta\sin\alpha,\\
+            x_3&=\sin\eta\cos\beta,\\
+            x_4&=\sin\eta\sin\beta.
+            \end{aligned}
+        \]
+        </p>
+
+        <p>
+        These expressions are the direct input to the projection function
+        implemented in Python. Each pair of coordinates describes a circle
+        in one of the two orthogonal coordinate planes of \(\mathbb R^4\).
+        The parameter \(\eta\) controls the radii of those circles, while
+        \(\alpha\) and \(\beta\) determine positions along them.
+        </p>
+
+        <h3>4. The Geometric Meaning of Constant \(\eta\)</h3>
+
+        <p>
+        Suppose \(\eta\) is fixed while both phase angles vary independently.
+        Then the two complex moduli remain fixed:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            |z_1|=\cos\eta,\qquad |z_2|=\sin\eta.
+        \]
+        </p>
+
+        <p>
+        Each complex coordinate moves around a circle. The pair of independent
+        angular variables therefore parameterizes a product of two circles,
+        \(S^1\times S^1\), embedded in \(S^3\). This product is a torus.
+        Constant-\(\eta\) surfaces form a family of toroidal submanifolds of
+        the three-sphere.
+        </p>
+
+        <p>
+        The familiar Clifford torus is the special member for which the two
+        complex coordinates have equal magnitude:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \cos\eta=\sin\eta
+            \quad\Longrightarrow\quad
+            \eta=\frac{\pi}{4}.
+        \]
+        </p>
+
+        <p>
+        At this value, both radii are \(1/\sqrt2\). It is the standard minimal
+        Clifford torus in the unit three-sphere. Other constant-\(\eta\)
+        surfaces are still tori, but generally are not minimal.
+        </p>
+
+        <p>
+        The animation uses
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \eta=0.38,\qquad 0.68,\qquad 0.96.
+        \]
+        </p>
+
+        <p>
+        These values produce three different constant-\(\eta\) surfaces.
+        The projected surfaces help organize the fiber curves visually,
+        but they should not be interpreted as literal nested tori with
+        identical radii. Stereographic projection is nonlinear and changes
+        apparent sizes and distances.
+        </p>
+
+        <h3>5. Stereographic Projection into Three-Dimensional Space</h3>
+
+        <p>
+        The original parameterization lives on \(S^3\subset\mathbb R^4\).
+        To display it using a three-dimensional renderer, the animation applies
+        stereographic projection. For a point
+        \((x_1,x_2,x_3,x_4)\) on the unit three-sphere, the projected point is
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{
+            (X,Y,Z)=
+            \left(
+            \frac{x_1}{1-x_4},
+            \frac{x_2}{1-x_4},
+            \frac{x_3}{1-x_4}
+            \right).
+            }
+        \]
+        </p>
+
+        <p>
+        The projection pole is the point \((0,0,0,1)\), where \(x_4=1\).
+        At that point, the denominator vanishes and the projected coordinates
+        diverge. Every other point on \(S^3\) has a finite image under this
+        particular chart.
+        </p>
+
+        <p>
+        The projection is a nonlinear coordinate transformation. The fourth
+        coordinate is not simply discarded: its effect appears in the common
+        denominator \(1-x_4\). Points near the projection pole are mapped to
+        large distances in \(\mathbb R^3\), while points farther from the pole
+        remain closer to the origin.
+        </p>
+
+        <p>
+        Stereographic projection is conformal, meaning that it preserves
+        angles locally. It does not preserve distances or global sizes.
+        Consequently, the projected curves can be inspected using ordinary
+        three-dimensional geometry, but their apparent radii and separations
+        should not be confused with their intrinsic distances on \(S^3\).
+        </p>
+
+        <h3>6. Deriving the Hopf-Fiber Parameterization</h3>
+
+        <p>
+        A Hopf fiber is generated by allowing both complex phases to advance
+        at the same rate while keeping their difference fixed. Introduce a
+        parameter \(t\) and a constant \(\delta\):
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \alpha=t,\qquad \beta=t-\delta.
+        \]
+        </p>
+
+        <p>
+        Substituting into the complex-coordinate parameterization gives
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{
+            z_1(t)=\cos\eta\,e^{it},\qquad
+            z_2(t)=\sin\eta\,e^{i(t-\delta)}.
+            }
+        \]
+        </p>
+
+        <p>
+        Both complex coordinates acquire the same phase factor \(e^{it}\).
+        The relative phase remains constant:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \arg z_1-\arg z_2=\delta.
+        \]
+        </p>
+
+        <p>
+        The parameter \(t\) moves along a single fiber, while \(\eta\) and
+        \(\delta\) select which fiber is being followed. The curve closes
+        after one full \(2\pi\) phase cycle. In the original four-dimensional
+        representation, it is a circle on \(S^3\).
+        </p>
+
+        <p>
+        The corresponding real-coordinate expressions are
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \begin{aligned}
+            x_1(t)&=\cos\eta\cos t,\\
+            x_2(t)&=\cos\eta\sin t,\\
+            x_3(t)&=\sin\eta\cos(t-\delta),\\
+            x_4(t)&=\sin\eta\sin(t-\delta).
+            \end{aligned}
+        \]
+        </p>
+
+        <p>
+        These four functions are passed through the stereographic map to
+        generate a three-dimensional curve. In the standard Hopf fibration,
+        the fibers are circles in \(S^3\). Their stereographic images are
+        circles or, for the exceptional fiber through the projection pole,
+        a straight line. The selected parameter values in this animation
+        avoid that singular case.
+        </p>
+
+        <h3>7. Why the Fibers Are Linked</h3>
+
+        <p>
+        The defining geometric property of the standard Hopf fibration is
+        that distinct fibers are disjoint but linked. They do not intersect
+        in the three-dimensional configuration, even when their projections
+        overlap in a particular two-dimensional view.
+        </p>
+
+        <p>
+        For two disjoint, oriented, closed curves \(C_1\) and \(C_2\), the
+        linking number measures their topological linking. For two distinct
+        fibers of the standard Hopf fibration, its magnitude is one:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{|\operatorname{Lk}(C_1,C_2)|=1.}
+        \]
+        </p>
+
+        <p>
+        The sign depends on the orientation convention used for the curves.
+        The important point is that the linking is not caused by the choice
+        of colors or the camera angle. It is a property of how the fibers
+        are embedded in the projected three-dimensional space.
+        </p>
+
+        <p>
+        The animation illustrates this structure visually, but it does not
+        calculate the linking number. A numerical verification would require
+        selecting a pair of curves and evaluating a linking invariant, such
+        as the Gauss linking integral, or using an equivalent topological
+        method.
+        </p>
+
+        <h3>8. The Hopf Map \(h:S^3\rightarrow S^2\)</h3>
+
+        <p>
+        The fibration can be expressed through the Hopf map. One common
+        convention defines it as
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{
+            h(z_1,z_2)=
+            \left(
+            2z_1\overline{z}_2,\;
+            |z_1|^2-|z_2|^2
+            \right).
+            }
+        \]
+        </p>
+
+        <p>
+        The first component is complex, giving two real components, and the
+        second is real. Together, these define a vector in \(\mathbb R^3\).
+        We can verify that this vector lies on the unit two-sphere by computing
+        its squared norm:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \begin{aligned}
+            \|h(z_1,z_2)\|^2
+            &=4|z_1|^2|z_2|^2
+              +\left(|z_1|^2-|z_2|^2\right)^2\\
+            &=\left(|z_1|^2+|z_2|^2\right)^2\\
+            &=1.
+            \end{aligned}
+        \]
+        </p>
+
+        <p>
+        The last equality follows from the unit constraint defining \(S^3\).
+        Thus, the image of the map lies on \(S^2\).
+        </p>
+
+        <p>
+        Substituting the angular coordinates gives
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            2z_1\overline{z}_2
+            =\sin(2\eta)e^{i(\alpha-\beta)}
+        \]
+        </p>
+
+        <p>
+        and
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            |z_1|^2-|z_2|^2=\cos(2\eta).
+        \]
+        </p>
+
+        <p>
+        Therefore,
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \boxed{
+            h(\eta,\alpha,\beta)=
+            \left(
+            \sin(2\eta)\cos(\alpha-\beta),
+            \sin(2\eta)\sin(\alpha-\beta),
+            \cos(2\eta)
+            \right).
+            }
+        \]
+        </p>
+
+        <p>
+        This expression depends on the phase difference
+        \(\alpha-\beta\), not on the common phase. Along a Hopf fiber,
+        \(\alpha=t\) and \(\beta=t-\delta\), so
+        \(\alpha-\beta=\delta\) remains constant. The image of the entire
+        fiber under the Hopf map is therefore a single point on \(S^2\).
+        </p>
+
+        <p>
+        This is the essential meaning of a fibration in this example:
+        each point of the base sphere labels an entire circle in the total
+        space \(S^3\). The circle is the inverse image of that point under
+        the Hopf map.
+        </p>
+
+        <h2>Part II: Computational Implementation — Python and Manim</h2>
+
+        <h3>9. Scene Architecture and Numerical Parameters</h3>
+
+        <p>
+        The visualization is implemented in a class derived from Manim's
+        <code>ThreeDScene</code>. NumPy supplies trigonometric functions and
+        three-component coordinate arrays, while Manim generates parametric
+        surfaces, parametric curves, text, mathematical equations, and
+        camera motion.
+        </p>
+
+        <p>
+        The code defines three values of \(\eta\):
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \eta_{\rm values}=[0.38,\;0.68,\;0.96].
+        \]
+        </p>
+
+        <p>
+        The associated fiber counts are
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            N_{\rm fibers}=[7,\;9,\;11].
+        \]
+        </p>
+
+        <p>
+        These parameters control the number of toroidal shells and the number
+        of representative fibers drawn on each shell. The complete visualization
+        contains twenty-seven colored fibers, plus one additional white
+        highlighted fiber on the middle shell.
+        </p>
+
+        <p>
+        A variable named <code>curve_samples = 160</code> is defined in the
+        source code, but it is not subsequently used to set the sampling
+        resolution. The curves are created using Manim's
+        <code>ParametricFunction</code>, which controls its own internal
+        sampling and smoothing.
+        </p>
+
+        <h3>10. Implementing Stereographic Projection</h3>
+
+        <p>
+        The function <code>stereographic_point(eta, alpha, beta)</code>
+        implements the coordinate map. It first calculates the four real
+        coordinates:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \begin{aligned}
+            x_1&=\cos\eta\cos\alpha,\\
+            x_2&=\cos\eta\sin\alpha,\\
+            x_3&=\sin\eta\cos\beta,\\
+            x_4&=\sin\eta\sin\beta.
+            \end{aligned}
+        \]
+        </p>
+
+        <p>
+        It then calculates
+        <code>denominator = 1.0 - x4</code> and returns the vector
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \mathbf R=
+            \left(
+            \frac{x_1}{1-x_4},
+            \frac{x_2}{1-x_4},
+            \frac{x_3}{1-x_4}
+            \right).
+        \]
+        </p>
+
+        <p>
+        The same helper function is used for both the toroidal surfaces and
+        the Hopf fibers. This ensures that all geometric objects are mapped
+        into the same projected coordinate system and remain consistent with
+        the same mathematical definition.
+        </p>
+
+        <p>
+        The source comments that the selected \(\eta\) values stay away from
+        the projection pole. More precisely, the denominator depends on both
+        \(\eta\) and \(\beta\), since \(x_4=\sin\eta\sin\beta\). For the
+        selected values, \(x_4\) does not reach one, so the denominator remains
+        positive and the sampled projected coordinates remain finite.
+        </p>
+
+        <h3>11. Generating Each Hopf Fiber</h3>
+
+        <p>
+        The helper function <code>fiber_point(eta, delta, t)</code> implements
+        the defining phase relationship:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \alpha=t,\qquad \beta=t-\delta.
+        \]
+        </p>
+
+        <p>
+        It calls <code>stereographic_point()</code> with these two phase
+        values, returning the projected three-dimensional point at parameter
+        \(t\). The function <code>make_fiber()</code> then wraps this point
+        generator in a <code>ParametricFunction</code> over
+        \(0\leq t\leq2\pi\).
+        </p>
+
+        <p>
+        The full \(2\pi\) range ensures that the common phase completes one
+        cycle. The line color and stroke width are supplied as arguments,
+        allowing the same mathematical construction to be reused with
+        different visual styles.
+        </p>
+
+        <p>
+        The fibers are generated using a nested loop. The outer loop selects
+        a shell and its corresponding value of \(\eta\); the inner loop
+        chooses the phase offset
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \delta_j=\frac{2\pi j}{N},
+            \qquad j=0,\ldots,N-1.
+        \]
+        </p>
+
+        <p>
+        The variable \(N\) is the fiber count for the current shell. This
+        distributes the phase offsets uniformly over a full angular period.
+        Each curve is then assigned a color from the palette, with the color
+        index shifted according to the shell number. The curves are stored
+        in a <code>VGroup</code>, which makes it possible to animate the
+        entire collection as one logical group.
+        </p>
+
+        <h3>12. Constructing the Constant-\(\eta\) Surfaces</h3>
+
+        <p>
+        The function <code>make_torus(eta, color)</code> fixes the parameter
+        \(\eta\) and allows both phases to vary independently. The corresponding
+        map is
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \mathbf R_\eta(\alpha,\beta)
+            =\operatorname{stereo}(\eta,\alpha,\beta).
+        \]
+        </p>
+
+        <p>
+        The function passes this parameterization to Manim's
+        <code>Surface</code> object, with both parameter ranges running from
+        zero to \(2\pi\). The resolution is <code>(32, 32)</code>, giving
+        a finite grid of samples for the two-dimensional surface.
+        </p>
+
+        <p>
+        Each shell uses a different color: blue, purple, or teal. The fill
+        opacity is only <code>0.075</code>, while the mesh stroke has a
+        small width and reduced opacity. These settings are deliberate:
+        the shells provide spatial context without hiding the fiber curves.
+        </p>
+
+        <p>
+        The surfaces are assembled into a <code>VGroup</code> and animated
+        with <code>LaggedStart</code>. A lag ratio of <code>0.3</code>
+        staggers the creation animations, allowing each shell to become
+        visible in sequence rather than appearing simultaneously.
+        </p>
+
+        <h3>13. The Introduction and Mathematical Explanations</h3>
+
+        <p>
+        The opening scene introduces the title, subtitle, and defining equation
+        of the three-sphere. The equation is displayed as
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            S^3=\left\{(z_1,z_2)\in\mathbb C^2:
+            |z_1|^2+|z_2|^2=1\right\}.
+        \]
+        </p>
+
+        <p>
+        The animation then transitions through the complex-coordinate
+        parameterization, its normalization identity, and the stereographic
+        projection formula. Each stage is implemented with Manim's
+        <code>Tex</code> or <code>MathTex</code> objects and animations such
+        as <code>Write</code> and <code>FadeIn</code>.
+        </p>
+
+        <p>
+        These explanatory equations are not part of the three-dimensional
+        geometry. They communicate the mathematical operation associated
+        with each stage. The code uses <code>add_fixed_in_frame_mobjects()</code>
+        so that the text remains fixed relative to the screen while the
+        three-dimensional camera changes orientation.
+        </p>
+
+        <p>
+        This separation between geometric objects and screen-fixed annotations
+        is important in a mathematical animation. The viewer can inspect a
+        surface from different directions without the equations tilting or
+        moving as if they were physical objects in the scene.
+        </p>
+
+        <h3>14. Revealing the Fibers on the Toroidal Shells</h3>
+
+        <p>
+        Once the three surfaces have been introduced, the program constructs
+        the collection of twenty-seven colored fibers. The title
+        "Each colored curve is a Hopf fiber" appears at the top of the
+        screen, while the two complex-coordinate expressions are shown near
+        the bottom.
+        </p>
+
+        <p>
+        The fibers are drawn using <code>LaggedStart</code> with
+        <code>lag_ratio = 0.025</code> and a total animation time of seven
+        seconds. The small lag makes the curves appear in a rapid sequence,
+        revealing the structure progressively rather than displaying all
+        lines at once.
+        </p>
+
+        <p>
+        The source then constructs a highlighted fiber using
+        \(\eta=0.68\) and \(\delta=0\). This is the middle shell's selected
+        fiber. Its color is white and its stroke width is <code>4.2</code>,
+        compared with <code>2.1</code> for the colored curves.
+        </p>
+
+        <p>
+        The highlighted curve is generated by the same function as all other
+        fibers. The distinction is purely visual: the geometry is unchanged,
+        but the stronger stroke makes one representative fiber easier to
+        follow within the collection.
+        </p>
+
+        <h3>15. Displaying the Hopf Map</h3>
+
+        <p>
+        The next scene presents the mathematical map
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            h(z_1,z_2)=
+            \left(2z_1\overline{z}_2,\,
+            |z_1|^2-|z_2|^2\right).
+        \]
+        </p>
+
+        <p>
+        The title identifies the domain and codomain as \(S^3\) and \(S^2\),
+        and a note explains that each point on \(S^2\) labels a circular
+        fiber. This scene supplies the conceptual link between the family
+        of curves shown earlier and the topology of the fibration.
+        </p>
+
+        <p>
+        The current source displays the Hopf map symbolically. It does not
+        construct a separate target sphere, calculate the image of every
+        fiber point in code, or animate a moving point on \(S^2\). The
+        relationship is conveyed through the equation and the fiber
+        geometry already constructed.
+        </p>
+
+        <h3>16. The Final Rotating View</h3>
+
+        <p>
+        After the Hopf map is introduced, the program fades out the three
+        toroidal surfaces while keeping the fibers visible. This makes the
+        linked curves easier to distinguish because the semi-transparent
+        shells no longer compete visually with the lines.
+        </p>
+
+        <p>
+        The final camera is set in ambient rotation using
+        <code>begin_ambient_camera_rotation(rate=0.25, about="theta")</code>.
+        The camera rotates about its azimuthal angle while the fiber
+        configuration remains fixed. The highlighted fiber is therefore
+        brought into view through a change of perspective, not by changing
+        its coordinates or physically rotating the geometry.
+        </p>
+
+        <p>
+        The final title and note remain fixed in the frame while the camera
+        moves. The scene waits for twelve seconds, stops the ambient rotation,
+        and then fades out the annotations. This gives the viewer time to
+        inspect the linked curves from multiple viewpoints.
+        </p>
+
+        <h3>17. Mathematical Scope and Limitations</h3>
+
+        <p>
+        The complete Hopf fibration contains a continuum of fibers, indexed
+        by points of \(S^2\). The animation displays only twenty-seven
+        representative colored fibers and one highlighted fiber. This finite
+        collection is a visualization of the fibration, not an exhaustive
+        rendering of every fiber.
+        </p>
+
+        <p>
+        The three projected surfaces correspond to selected constant values
+        of \(\eta\). They illustrate the toroidal structure of the
+        parameterization, but they do not constitute the entire three-sphere.
+        Only the surface at \(\eta=\pi/4\) is the standard minimal Clifford
+        torus; the other two are members of the broader family of
+        constant-\(\eta\) tori.
+        </p>
+
+        <p>
+        The projection preserves local angles but not distances. Apparent
+        radii, sizes, and separations in the rendered scene should therefore
+        not be interpreted as intrinsic distances on \(S^3\). Similarly,
+        the animation illustrates the linking of fibers but does not
+        numerically evaluate a linking number.
+        </p>
+
+        <h3>18. Further Computational Extensions</h3>
+
+        <p>
+        The project can be extended by explicitly constructing the target
+        two-sphere and evaluating the Hopf map for a point on each fiber.
+        Because the map is constant along a fiber, this would show a
+        moving point on a circular curve in the total space while its
+        image remains fixed on the base sphere.
+        </p>
+
+        <p>
+        Another extension would be to compute the linking number for selected
+        pairs of fibers. One method is the Gauss linking integral:
+        </p>
+
+        <p style="text-align:center;">
+        \[
+            \operatorname{Lk}(C_1,C_2)=
+            \frac{1}{4\pi}
+            \oint_{C_1}\oint_{C_2}
+            \frac{
+            (d\mathbf r_1\times d\mathbf r_2)
+            \cdot(\mathbf r_1-\mathbf r_2)
+            }{
+            |\mathbf r_1-\mathbf r_2|^3
+            }.
+        \]
+        </p>
+
+        <p>
+        A numerical implementation would sample two disjoint curves,
+        approximate the line integrals, and test whether the resulting
+        linking number approaches an integer under refinement. Such a
+        calculation would complement the geometric animation with a
+        quantitative topological diagnostic.
+        </p>
+
+        <p>
+        Additional improvements could include interactive controls for
+        \(\eta\) and \(\delta\), a smooth animation of the phase parameter
+        \(t\) along a selected fiber, or comparisons between stereographic
+        and other projection schemes. These would allow the viewer to
+        explore the family of fibers and understand how the parameterization
+        generates the global linked structure.
+        </p>
+
+        <h3>Conclusion</h3>
+
+        <p>
+        The Hopf fibration provides a striking example of how complex
+        coordinates and topology can reveal the structure of a higher-dimensional
+        manifold. The three-sphere is parameterized using two complex
+        amplitudes, its constant-coordinate surfaces form tori, and its
+        Hopf fibers arise by evolving both complex phases together while
+        keeping their difference fixed.
+        </p>
+
+        <p>
+        Stereographic projection makes these curves visible in ordinary
+        three-dimensional space, while the Hopf map explains why each fiber
+        corresponds to a point on the two-sphere. The linked arrangement
+        of distinct fibers is the central geometric feature of the construction.
+        </p>
+
+        <p>
+        By combining analytic parameterization, coordinate projection,
+        parametric surface construction, curve generation, and a rotating
+        camera, this Manim project translates an abstract result in
+        differential geometry into a visual mathematical narrative. Its
+        significance lies not merely in displaying circles on tori, but
+        in revealing the nontrivial relationship between \(S^3\), \(S^2\),
+        and the topology of linked curves.
+        </p>
+        """
     }
 
 ]
