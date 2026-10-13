@@ -2,102 +2,255 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Physics with Manim | Scientific Visualizations</title>
+    <title>Physics with Manim | Obaid Ur Rehman</title>
 
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}"
     >
-
 </head>
-
 
 <body>
 
-<header>
+<!-- Decorative physics background -->
 
-    <h1>Physics with Manim</h1>
+<div class="physics-backdrop" aria-hidden="true">
 
-    <p class="header-subtitle">
-        Mathematical Physics · Scientific Visualization · Computational Exploration
-    </p>
+    <span class="equation eq-one">F = ma</span>
+    <span class="equation eq-two">iℏ ∂ψ/∂t = Ĥψ</span>
+    <span class="equation eq-three">Gμν = 8πG Tμν</span>
+    <span class="equation eq-four">x(t) = A cos(ωt + φ)</span>
+    <span class="equation eq-five">∇²Φ = 4πGρ</span>
+    <span class="equation eq-six">ds² = gμν dxμ dxν</span>
+
+    <svg class="physics-drawing"
+         viewBox="0 0 1200 800"
+         preserveAspectRatio="xMidYMid slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+            <pattern id="grid" width="40" height="40"
+                     patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40"
+                      fill="none"
+                      stroke="#6ca8ff"
+                      stroke-width="0.7"
+                      opacity="0.16"/>
+            </pattern>
+        </defs>
+
+        <rect width="1200" height="800" fill="url(#grid)"/>
+
+        <!-- Oscillatory curve -->
+
+        <g fill="none" stroke="#58c8e8"
+           stroke-width="2" opacity="0.48">
+
+            <path d="M 40 210
+                     C 80 130, 120 130, 160 210
+                     S 240 290, 280 210
+                     S 360 130, 400 210
+                     S 480 290, 520 210"/>
+
+            <line x1="40" y1="210" x2="540" y2="210"
+                  stroke-dasharray="5 8" opacity="0.5"/>
+
+        </g>
+
+        <!-- Coordinate axes and a schematic graph -->
+
+        <g fill="none" stroke="#86aaff"
+           stroke-width="1.5" opacity="0.38">
+
+            <path d="M 740 570 L 1120 570
+                     M 780 640 L 780 350"/>
+
+            <path d="M 780 570
+                     C 820 570, 825 400, 870 400
+                     S 920 650, 965 650
+                     S 1010 410, 1060 410
+                     S 1100 570, 1120 570"/>
+
+        </g>
+
+        <!-- Spring-mass oscillator -->
+
+        <g fill="none" stroke="#d3a7ff"
+           stroke-width="2" opacity="0.45">
+
+            <line x1="80" y1="490" x2="310" y2="490"/>
+
+            <path d="M 100 490
+                     L 112 475 L 128 505 L 144 475
+                     L 160 505 L 176 475 L 192 505
+                     L 208 475 L 224 505 L 240 490"/>
+
+            <rect x="240" y="468" width="65" height="44" rx="4"/>
+
+            <line x1="100" y1="450" x2="305" y2="450"
+                  stroke-dasharray="4 7"/>
+
+        </g>
+
+        <!-- A small orbit-like curve -->
+
+        <g fill="none" stroke="#58c8e8"
+           stroke-width="1.5" opacity="0.38">
+
+            <ellipse cx="960" cy="200" rx="135" ry="55"
+                     transform="rotate(-25 960 200)"/>
+
+            <ellipse cx="960" cy="200" rx="135" ry="55"
+                     transform="rotate(35 960 200)"/>
+
+            <circle cx="960" cy="200" r="9" fill="#58c8e8"/>
+
+            <circle cx="1080" cy="135" r="5" fill="#d3a7ff"/>
+
+        </g>
+
+    </svg>
+
+</div>
+
+
+<header class="site-header">
+
+    <div class="header-inner">
+        <a class="site-logo" href="{{ url_for('home') }}">
+            Physics <span>with Manim</span>
+        </a>
+
+        <p class="header-subtitle">
+            Mathematical Physics · Geometry · Scientific Visualization
+        </p>
+    </div>
 
 </header>
 
 
-<main>
+<main class="page-layout">
 
-    <!-- Personal Introduction -->
+    <!-- Main content on the left -->
 
-    <section class="personal-intro">
+    <div class="main-column">
 
-        <h2>About Me</h2>
+        <section class="personal-intro">
 
-        <p>
-            I am a physics enthusiast with a strong interest in theoretical
-            physics, mathematical structures, and computational methods.
-            I enjoy exploring how mathematical ideas describe the physical
-            world and how complex concepts can be communicated through
-            clear visual representations.
-        </p>
+            <p class="eyebrow">THE PERSON BEHIND THE PROJECTS</p>
 
-        <p>
-            This website is a collection of animations I develop using
-            Python and Manim. Through these projects, I aim to connect
-            mathematical reasoning with visual intuition and explore
-            physical systems in an interactive and engaging way.
-        </p>
+            <h1>Exploring Physics Through Visualization</h1>
 
-    </section>
+            <p>
+                I am a physicist interested in theoretical physics,
+                mathematical structures, and computational exploration.
+                I enjoy investigating how abstract mathematical ideas
+                describe the physical world and how visual representations
+                can reveal their underlying structure.
+            </p>
 
-
-    <!-- Projects -->
-
-    <section class="projects-section">
-
-        <h2>Projects</h2>
-
-        <p class="projects-intro">
-            The projects below explore a range of topics in mathematics
-            and physics, from classical dynamical systems and geometry
-            to quantum mechanics and gravitational phenomena. Each project
-            combines a visual animation with its description and Python
-            source code, making it possible to explore both the underlying
-            ideas and their implementation.
-        </p>
-
-
-        <div class="project-list">
-
-            {% for project in projects %}
+            <p>
+                This portfolio brings together animations created using
+                Python and Manim, exploring topics across geometry,
+                dynamical systems, quantum mechanics, and gravitation.
+                Each project connects mathematical ideas with visual
+                intuition and computational implementation.
+            </p>
 
             <a
-                class="project-button"
-                href="{{ url_for('project', slug=project.slug) }}"
+                class="contact-button"
+                href="mailto:rehman.obaid.9292@gmail.com?subject=Project%20Inquiry"
             >
-                {{ project.name }}
+                <span>Available for Project</span>
+                <span class="button-arrow">↗</span>
             </a>
 
-            {% endfor %}
+            <p class="contact-note">
+                Have a project or collaboration in mind? Let's talk.
+            </p>
+
+        </section>
+
+
+        <section class="projects-section">
+
+            <p class="eyebrow">SELECTED WORK</p>
+
+            <h2>Projects</h2>
+
+            <p class="projects-intro">
+                These visualizations explore mathematical and physical
+                systems through geometric constructions, equations,
+                numerical simulations, and animated models. Open a project
+                to watch its animation, read the explanation, and explore
+                the Python source code.
+            </p>
+
+            <div class="project-list">
+
+                {% for project in projects %}
+
+                <a
+                    class="project-button"
+                    href="{{ url_for('project', slug=project.slug) }}"
+                >
+                    <span>{{ project.name }}</span>
+                    <span class="project-arrow">↗</span>
+                </a>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- Profile card on the right, aligned toward the bottom -->
+
+    <aside class="profile-card">
+
+        <div class="profile-image-frame">
+
+            <img
+                src="{{ url_for('static', filename='images/profile.jpg') }}"
+                alt="Portrait of Obaid Ur Rehman"
+                class="profile-image"
+            >
 
         </div>
 
-    </section>
+        <p class="profile-label">PHYSICS · MATHEMATICS · CODE</p>
+
+        <h2>Obaid Ur Rehman</h2>
+
+        <p class="profile-description">
+            Theoretical physics enthusiast exploring the geometry
+            and mathematics behind physical phenomena.
+        </p>
+
+        <a
+            class="profile-email"
+            href="mailto:rehman.obaid.9292@gmail.com"
+        >
+            Get in touch ↗
+        </a>
+
+    </aside>
 
 </main>
 
 
-<footer>
+<footer class="site-footer">
 
     <p>Physics with Manim</p>
+    <p>Mathematics made visible.</p>
 
 </footer>
 
-
 </body>
-
 </html>
