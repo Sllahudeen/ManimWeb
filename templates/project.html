@@ -117,6 +117,20 @@
 </footer>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([
+            document.querySelector(".physics-description")
+        ]).catch(function (err) {
+            console.error("MathJax rendering error:", err);
+        });
+    }
+});
+</script>
+
+
+
 </body>
 
 </html>

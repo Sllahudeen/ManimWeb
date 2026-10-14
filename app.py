@@ -13,157 +13,154 @@ app = Flask(__name__)
 projects = [
 
     {
-
-
-    "name": "Black Holes",
-    "slug": "black-holes",
-    "description": r"""
-    <div class="physics-description">
-
-        <p class="description-intro">
-            This project visualizes gravitational light bending around
-            a non-rotating black hole using Schwarzschild geometry as
-            the theoretical framework. The implementation combines
-            approximate numerical ray propagation, fourth-order
-            Runge-Kutta integration, GLSL fragment shading, procedural
-            rendering, surface-intersection detection, and animated
-            camera control.
-        </p>
+        "name": "Black Holes",
+        "slug": "black-holes",
+        "description": """
+        <div class="physics-description">
 
         <h3>Part I — Physics and Mathematical Formulation</h3>
 
         <h4>1. Schwarzschild Spacetime</h4>
 
         <p>
-            The Schwarzschild solution describes the exterior spacetime
-            of a static, spherically symmetric, uncharged black hole.
-            In geometrized units, G = c = 1, its metric is
+        This project visualizes gravitational light bending around a
+        non-rotating black hole using Schwarzschild geometry as the
+        theoretical framework. The implementation combines approximate
+        numerical ray propagation, fourth-order Runge-Kutta integration,
+        GLSL fragment shading, procedural rendering, surface-intersection
+        detection, and animated camera control.
         </p>
 
-        <div class="equation">
-            \[
-            ds^2=-\left(1-\frac{2M}{r}\right)dt^2
-            +\left(1-\frac{2M}{r}\right)^{-1}dr^2
-            +r^2d\Omega^2.
-            \]
-        </div>
-
         <p>
-            Restoring physical units, the Schwarzschild radius is
+        The Schwarzschild solution describes the exterior spacetime of
+        a static, spherically symmetric, uncharged black hole. In
+        geometrized units, where \\(G=c=1\\), its metric is
         </p>
 
-        <div class="equation">
-            \[
-            r_s=\frac{2GM}{c^2}.
-            \]
-        </div>
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        ds^2=-\\left(1-\\frac{2M}{r}\\right)dt^2
+        +\\left(1-\\frac{2M}{r}\\right)^{-1}dr^2
+        +r^2d\\Omega^2.
+        \\]
+        </p>
 
         <p>
-            The event horizon is located at r = r_s. The geometry
-            determines how freely propagating light moves through
-            curved spacetime.
+        Restoring physical units, the Schwarzschild radius is
+        </p>
+
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        r_s=\\frac{2GM}{c^2}.
+        \\]
+        </p>
+
+        <p>
+        The event horizon is located at \\(r=r_s\\). The geometry
+        determines how freely propagating light moves through curved
+        spacetime.
         </p>
 
         <h4>2. Null Geodesics and the Orbit of Light</h4>
 
         <p>
-            Photons follow null geodesics, for which ds² = 0. By
-            exploiting spherical symmetry and the conserved energy E
-            and angular momentum L, the radial equation can be written
-            as
+        Photons follow null geodesics, for which \\(ds^2=0\\).
+        By exploiting spherical symmetry and the conserved energy
+        \\(E\\) and angular momentum \\(L\\), the radial equation can
+        be written as
         </p>
 
-        <div class="equation">
-            \[
-            \left(\frac{dr}{d\lambda}\right)^2
-            =\frac{E^2}{c^2}
-            -\left(1-\frac{r_s}{r}\right)\frac{L^2}{r^2}.
-            \]
-        </div>
-
-        <p>
-            Introducing the inverse radial coordinate u = 1/r and
-            the impact parameter b = Lc/E gives the Schwarzschild
-            null-orbit equation
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        \\left(\\frac{dr}{d\\lambda}\\right)^2
+        =\\frac{E^2}{c^2}
+        -\\left(1-\\frac{r_s}{r}\\right)\\frac{L^2}{r^2}.
+        \\]
         </p>
 
-        <div class="equation">
-            \[
-            \boxed{
-            \frac{d^2u}{d\phi^2}+u
-            =\frac32 r_su^2
-            }.
-            \]
-        </div>
+        <p>
+        Introducing the inverse radial coordinate \\(u=1/r\\) and
+        the impact parameter \\(b=Lc/E\\) gives the Schwarzschild
+        null-orbit equation
+        </p>
+
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        \\boxed{
+        \\frac{d^2u}{d\\phi^2}+u
+        =\\frac{3}{2}r_su^2
+        }
+        \\]
+        </p>
 
         <p>
-            The nonlinear term is responsible for the relativistic
-            correction to the flat-space orbital equation. It allows
-            light to undergo gravitational deflection and, for suitable
-            initial conditions, strong lensing near the black hole.
+        The nonlinear term is responsible for the relativistic
+        correction to the flat-space orbital equation. It allows light
+        to undergo gravitational deflection and, for suitable initial
+        conditions, strong lensing near the black hole.
         </p>
 
         <h4>3. Photon Sphere and Critical Impact Parameter</h4>
 
         <p>
-            Schwarzschild spacetime has an unstable circular photon
-            orbit at the photon sphere:
+        Schwarzschild spacetime has an unstable circular photon orbit
+        at the photon sphere:
         </p>
 
-        <div class="equation">
-            \[
-            r_{\mathrm{ph}}=\frac{3GM}{c^2}
-            =\frac32 r_s.
-            \]
-        </div>
-
-        <p>
-            The critical impact parameter for an incoming photon is
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        r_{\\mathrm{ph}}=\\frac{3GM}{c^2}
+        =\\frac{3}{2}r_s.
+        \\]
         </p>
 
-        <div class="equation">
-            \[
-            b_{\mathrm{crit}}=3\sqrt{3}\frac{GM}{c^2}.
-            \]
-        </div>
+        <p>
+        The critical impact parameter for an incoming photon is
+        </p>
+
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        b_{\\mathrm{crit}}=3\\sqrt{3}\\frac{GM}{c^2}.
+        \\]
+        </p>
 
         <p>
-            Incoming rays with impact parameters above the critical
-            value can scatter back outward, while rays below it are
-            captured in the idealized Schwarzschild problem. The
-            unstable photon orbit is closely related to strong
-            gravitational lensing near a black hole.
+        Incoming rays with impact parameters above the critical value
+        can scatter back outward, while rays below it are captured
+        in the idealized Schwarzschild problem. The unstable photon
+        orbit is closely related to strong gravitational lensing near
+        a black hole.
         </p>
 
         <h4>4. Why an Accretion Disk Forms</h4>
 
         <p>
-            Matter approaching a black hole generally carries angular
-            momentum. Instead of falling directly inward, gas tends
-            to orbit the central object. Collisions, turbulence, and
-            angular-momentum transport allow some material to spiral
-            inward while transferring angular momentum outward.
-            Dissipation heats the gas, which can radiate energy.
-            Damping of motion perpendicular to the orbital plane helps
-            produce a flattened accretion disk.
+        Matter approaching a black hole generally carries angular
+        momentum. Instead of falling directly inward, gas tends to
+        orbit the central object. Collisions, turbulence, and
+        angular-momentum transport allow some material to spiral
+        inward while transferring angular momentum outward.
+        Dissipation heats the gas, which can radiate energy.
+        Damping of motion perpendicular to the orbital plane helps
+        produce a flattened accretion disk.
         </p>
 
         <p>
-            For a Schwarzschild black hole, the innermost stable
-            circular orbit of massive test particles is
+        For a Schwarzschild black hole, the innermost stable circular
+        orbit of massive test particles is
         </p>
 
-        <div class="equation">
-            \[
-            r_{\mathrm{ISCO}}=\frac{6GM}{c^2}=3r_s.
-            \]
-        </div>
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        r_{\\mathrm{ISCO}}=\\frac{6GM}{c^2}=3r_s.
+        \\]
+        </p>
 
         <p>
-            The ISCO is distinct from the photon sphere. This animation
-            renders a procedural disk for visualization; it does not
-            solve the hydrodynamics, magnetic turbulence, or radiative
-            transfer of a real accretion flow.
+        The ISCO is distinct from the photon sphere. This animation
+        renders a procedural disk for visualization; it does not solve
+        the hydrodynamics, magnetic turbulence, or radiative transfer
+        of a real accretion flow.
         </p>
 
         <h3>Part II — Numerical and Graphical Implementation</h3>
@@ -171,199 +168,196 @@ projects = [
         <h4>5. Approximate Ray-Bending Model</h4>
 
         <p>
-            The GLSL shader propagates a ray through three-dimensional
-            space. Let x be its position, n its unit direction, and
-            r = |x|. The code constructs an angular-momentum-like
-            vector
+        The GLSL shader propagates a ray through three-dimensional
+        space. Let \\(\\mathbf{x}\\) be its position, \\(\\mathbf{n}\\)
+        its unit direction, and \\(r=|\\mathbf{x}|\\). The code
+        constructs an angular-momentum-like vector
         </p>
 
-        <div class="equation">
-            \[
-            \boldsymbol{\ell}=\mathbf{x}\times\mathbf{n},
-            \qquad
-            \ell^2=\boldsymbol{\ell}\cdot\boldsymbol{\ell}.
-            \]
-        </div>
-
-        <p>
-            The approximate acceleration used by the shader has the
-            form
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        \\boldsymbol{\\ell}=\\mathbf{x}\\times\\mathbf{n},
+        \\qquad
+        \\ell^2=\\boldsymbol{\\ell}\\cdot\\boldsymbol{\\ell}.
+        \\]
         </p>
 
-        <div class="equation">
-            \[
-            \mathbf{a}
-            =-\frac{3r_s\ell^2}{2r^5}\hat{\mathbf r},
-            \qquad
-            \hat{\mathbf r}=\frac{\mathbf{x}}{r}.
-            \]
-        </div>
-
         <p>
-            The ray is advanced according to the approximate system
+        The approximate acceleration used by the shader has the form
         </p>
 
-        <div class="equation">
-            \[
-            \frac{d\mathbf{x}}{ds}=\mathbf{n},
-            \qquad
-            \frac{d\mathbf{n}}{ds}=\mathbf{a}.
-            \]
-        </div>
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        \\mathbf{a}
+        =-\\frac{3r_s\\ell^2}{2r^5}\\hat{\\mathbf r},
+        \\qquad
+        \\hat{\\mathbf r}=\\frac{\\mathbf{x}}{r}.
+        \\]
+        </p>
 
         <p>
-            This is the spatial ray-bending model used for rendering.
-            It should not be confused with an exact integration of
-            the Schwarzschild null-geodesic equations presented in
-            Part I.
+        The ray is advanced according to the approximate system
+        </p>
+
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        \\frac{d\\mathbf{x}}{ds}=\\mathbf{n},
+        \\qquad
+        \\frac{d\\mathbf{n}}{ds}=\\mathbf{a}.
+        \\]
+        </p>
+
+        <p>
+        This is the spatial ray-bending model used for rendering.
+        It should not be confused with an exact integration of the
+        Schwarzschild null-geodesic equations presented in Part I.
         </p>
 
         <h4>6. Fourth-Order Runge-Kutta Integration</h4>
 
         <p>
-            A numerical integrator is needed to advance the ray through
-            the spatially varying acceleration field. The classical
-            fourth-order Runge-Kutta method evaluates the differential
-            equation at four intermediate stages:
+        A numerical integrator is needed to advance the ray through
+        the spatially varying acceleration field. The classical
+        fourth-order Runge-Kutta method evaluates the differential
+        equation at four intermediate stages:
         </p>
 
-        <div class="equation">
-            \[
-            \begin{aligned}
-            k_1&=f(y_n),\\
-            k_2&=f(y_n+\tfrac h2k_1),\\
-            k_3&=f(y_n+\tfrac h2k_2),\\
-            k_4&=f(y_n+hk_3),\\
-            y_{n+1}&=y_n+
-            \frac h6(k_1+2k_2+2k_3+k_4).
-            \end{aligned}
-            \]
-        </div>
-
-        <p>
-            Here y represents the coupled ray variables and h is the
-            numerical step size. The shader adapts its step according
-            to the current radius:
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        \\begin{aligned}
+        k_1&=f(y_n),\\\\
+        k_2&=f\\left(y_n+\\frac{h}{2}k_1\\right),\\\\
+        k_3&=f\\left(y_n+\\frac{h}{2}k_2\\right),\\\\
+        k_4&=f(y_n+hk_3),\\\\
+        y_{n+1}&=y_n+
+        \\frac{h}{6}(k_1+2k_2+2k_3+k_4).
+        \\end{aligned}
+        \\]
         </p>
 
-        <div class="equation">
-            \[
-            h=\operatorname{clamp}(0.025r,\;0.025,\;0.65).
-            \]
-        </div>
+        <p>
+        Here \\(y\\) represents the coupled ray variables and \\(h\\)
+        is the numerical step size. The shader adapts its step
+        according to the current radius:
+        </p>
+
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        h=\\operatorname{clamp}(0.025r,\\;0.025,\\;0.65).
+        \\]
+        </p>
 
         <p>
-            The direction vector is normalized during the integration
-            to maintain a unit propagation direction. The ray loop
-            terminates when the ray reaches the horizon, escapes the
-            chosen rendering region, or reaches the iteration limit.
-            RK4 provides a numerical approximation, whose accuracy
-            depends on step size and the chosen model.
+        The direction vector is normalized during the integration
+        to maintain a unit propagation direction. The ray loop
+        terminates when the ray reaches the horizon, escapes the
+        chosen rendering region, or reaches the iteration limit.
+        RK4 provides a numerical approximation whose accuracy
+        depends on the step size and the chosen model.
         </p>
 
         <h4>7. Procedural Accretion Disk</h4>
 
         <p>
-            The shader represents the disk as a plane at y = 0.
-            When a ray crosses this plane, the code estimates the
-            intersection point and computes the cylindrical radius
+        The shader represents the disk as a plane at \\(y=0\\).
+        When a ray crosses this plane, the code estimates the
+        intersection point and computes the cylindrical radius
         </p>
 
-        <div class="equation">
-            \[
-            r_{\mathrm{disk}}=\sqrt{x^2+z^2}.
-            \]
-        </div>
-
-        <p>
-            The visible disk occupies the radial interval
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        r_{\\mathrm{disk}}=\\sqrt{x^2+z^2}.
+        \\]
         </p>
 
-        <div class="equation">
-            \[
-            2.85\leq r_{\mathrm{disk}}\leq10.35.
-            \]
-        </div>
+        <p>
+        The visible disk occupies the radial interval
+        </p>
+
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        2.85\\leq r_{\\mathrm{disk}}\\leq10.35.
+        \\]
+        </p>
 
         <p>
-            Radial color variation produces the glowing appearance.
-            A directional brightness factor based on the local
-            tangential direction imitates the brighter approaching
-            side of a rotating disk. This is a visual approximation,
-            not a complete relativistic Doppler and radiative-transfer
-            calculation.
+        Radial color variation produces the glowing appearance.
+        A directional brightness factor based on the local tangential
+        direction imitates the brighter approaching side of a rotating
+        disk. This is a visual approximation, not a complete
+        relativistic Doppler and radiative-transfer calculation.
         </p>
 
         <h4>8. Flamm-Paraboloid Embedding</h4>
 
         <p>
-            The curved spatial grid is based on the Flamm-paraboloid
-            embedding function
+        The curved spatial grid is based on the Flamm-paraboloid
+        embedding function
         </p>
 
-        <div class="equation">
-            \[
-            z_{\mathrm F}(r)=2\sqrt{r_s(r-r_s)}.
-            \]
-        </div>
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        z_{\\mathrm F}(r)=2\\sqrt{r_s(r-r_s)}.
+        \\]
+        </p>
 
         <p>
-            This surface illustrates the intrinsic spatial geometry
-            of a constant-time Schwarzschild slice through an
-            embedding diagram. The shader checks ray-surface
-            intersections and refines the intersection by bisection.
-            Procedurally defined grid lines are then rendered on the
-            surface. The embedding is a geometric visualization,
-            not a literal membrane in spacetime.
+        This surface illustrates the intrinsic spatial geometry of
+        a constant-time Schwarzschild slice through an embedding
+        diagram. The shader checks ray-surface intersections and
+        refines the intersection by bisection. Procedurally defined
+        grid lines are then rendered on the surface. The embedding
+        is a geometric visualization, not a literal membrane in
+        spacetime.
         </p>
 
         <h4>9. GLSL Fragment Shader</h4>
 
         <p>
-            Manim supplies a FullScreenQuad on which the GLSL
-            fragment shader renders the scene. For each pixel, the
-            shader generates a ray from the camera through the image
-            plane and advances it through the approximate ray-bending
-            model. It determines whether the ray intersects the
-            black-hole horizon, accretion disk, or curved grid and
-            assigns the corresponding color.
+        Manim supplies a <code>FullScreenQuad</code> on which the
+        GLSL fragment shader renders the scene. For each pixel, the
+        shader generates a ray from the camera through the image
+        plane and advances it through the approximate ray-bending
+        model. It determines whether the ray intersects the
+        black-hole horizon, accretion disk, or curved grid and
+        assigns the corresponding color.
         </p>
 
         <p>
-            Performing this work per pixel exploits GPU parallelism
-            and avoids creating thousands of individual Manim objects.
-            The disk texture, brightness gradients, and grid appearance
-            are generated procedurally. A ring-like appearance in a
-            rendered image is not, by itself, evidence that an exact
-            photon-ring calculation has been performed.
+        Performing this work per pixel exploits GPU parallelism
+        and avoids creating thousands of individual Manim objects.
+        The disk texture, brightness gradients, and grid appearance
+        are generated procedurally. A ring-like appearance in a
+        rendered image is not, by itself, evidence that an exact
+        photon-ring calculation has been performed.
         </p>
 
         <h4>10. Camera Animation</h4>
 
         <p>
-            Manim ValueTracker objects control the azimuth, elevation
-            offset, and zoom. The camera position is reconstructed
-            from spherical coordinates:
+        Manim <code>ValueTracker</code> objects control the azimuth,
+        elevation offset, and zoom. The camera position is
+        reconstructed from spherical coordinates:
         </p>
 
-        <div class="equation">
-            \[
-            \begin{aligned}
-            x_c&=R\sin\alpha\cos\beta,\\
-            y_c&=R\sin\beta,\\
-            z_c&=R\cos\alpha\cos\beta.
-            \end{aligned}
-            \]
-        </div>
+        <p style="text-align:center; font-size:1.05em;">
+        \\[
+        \\begin{aligned}
+        x_c&=R\\sin\\alpha\\cos\\beta,\\\\
+        y_c&=R\\sin\\beta,\\\\
+        z_c&=R\\cos\\alpha\\cos\\beta.
+        \\end{aligned}
+        \\]
+        </p>
 
         <p>
-            Here R is the camera distance, alpha is the azimuth, and
-            beta is the total elevation. An updater transfers the
-            current camera parameters to the shader every frame.
-            The camera moves through staged rotations and zoom changes
-            to reveal the disk and curved spatial grid from different
-            viewpoints. These camera movements change the view, not
-            the underlying ray equations.
+        Here \\(R\\) is the camera distance, \\(\\alpha\\) is the
+        azimuth, and \\(\\beta\\) is the total elevation. An updater
+        transfers the current camera parameters to the shader every
+        frame. The camera moves through staged rotations and zoom
+        changes to reveal the disk and curved spatial grid from
+        different viewpoints. These camera movements change the
+        view, not the underlying ray equations.
         </p>
 
         <h3>Techniques Demonstrated</h3>
@@ -383,8 +377,6 @@ projects = [
         """,
         "video": "BlackHoleShader.mp4",
         "code": "source_code/shader.py"
-
-
     },
 
     {
